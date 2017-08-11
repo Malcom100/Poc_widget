@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Poc_WIDGET</string>
+
+    <string name="title_widget">WIDGET_TEST</string>
+    <string name="btn_alert">alert</string>
+    <string name="btn_voip">voip</string>
+    <string name="btn_map">map</string>
+
+    <string name="subtitle">AppWidget</string>
+    <string name="txt_widget">My first widget</string>
+</resources>
