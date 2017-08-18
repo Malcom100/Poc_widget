@@ -1,20 +1,71 @@
 {
   "project_info": {
-    "project_number": "103323467114",
-    "project_id": "adneom-1314"
+    "project_number": "384437120751",
+    "firebase_url": "https://awesomepoject.firebaseio.com",
+    "project_id": "awesomepoject",
+    "storage_bucket": "awesomepoject.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:103323467114:android:cdc1d06c9bc6b47f",
+        "mobilesdk_app_id": "1:384437120751:android:bdda3018bb58ca0a",
         "android_client_info": {
-          "package_name": "com.qustomer.android"
+          "package_name": "com.awesomeproject"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "384437120751-8c90pjso2mi1dlemnekokgqpbtcip3j0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.awesomeproject",
+            "certificate_hash": "bf403ea32ebdacd95d5aec3b44f543055203d115"
+          }
+        },
+        {
+          "client_id": "384437120751-7lfn1goqfqegggp1allg2pqche1hp7hs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyDxMVtizxpAEgjOB49JBXxpyMs9HjBCQek"
+          "current_key": "AIzaSyBVy3LUuA_cOheldCMPtsmL5bbSwjQwrqA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "384437120751-7lfn1goqfqegggp1allg2pqche1hp7hs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:384437120751:android:72f3ce058c9f728e",
+        "android_client_info": {
+          "package_name": "adneom.poc_widget"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "384437120751-7lfn1goqfqegggp1allg2pqche1hp7hs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVy3LUuA_cOheldCMPtsmL5bbSwjQwrqA"
         }
       ],
       "services": {
@@ -26,7 +77,7 @@
           "other_platform_oauth_client": []
         },
         "ads_service": {
-          "status": 1
+          "status": 2
         }
       }
     }
