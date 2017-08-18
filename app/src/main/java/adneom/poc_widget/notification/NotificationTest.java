@@ -6,9 +6,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-/**
- * Created by gtshilombowanticale on 11-08-17.
- */
+import adneom.poc_widget.MainActivity;
+
 
 public class NotificationTest extends AppCompatActivity {
 
@@ -22,9 +21,18 @@ public class NotificationTest extends AppCompatActivity {
         super.onResume();
         Intent intent = getIntent();
         if(intent != null){
-            Log.i("Test"," test for intent : "+(intent == null));
-            if(intent.hasExtra("alert")){
-                Log.i("Test","intent has extra alert :)");
+            if(intent.hasExtra(MainActivity.KEY_VALUE)){
+                int value = intent.getIntExtra(MainActivity.KEY_VALUE,-1);
+                switch (value){
+                    case 1 :
+                        break;
+                    case 2:
+                        Intent intentSnapshot = new Intent(NotificationTest.this,MainActivity.class);
+                        startActivity(intentSnapshot);
+                        break;
+                    case -1:
+                        break;
+                }
             }
         }
     }
