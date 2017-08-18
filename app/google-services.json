@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "103323467114",
+    "project_id": "adneom-1314"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:103323467114:android:cdc1d06c9bc6b47f",
+        "android_client_info": {
+          "package_name": "com.qustomer.android"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxMVtizxpAEgjOB49JBXxpyMs9HjBCQek"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
