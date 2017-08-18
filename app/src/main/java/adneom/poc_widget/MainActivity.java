@@ -4,19 +4,25 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.RemoteViews;
 
 import org.joda.time.DateTime;
 
+import adneom.poc_widget.fragments.FragmentMap;
+import adneom.poc_widget.interfaces.ISnapHotGoogleMap;
 import adneom.poc_widget.notification.NotificationTest;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ISnapHotGoogleMap{
 
     private NotificationManager notificationManager;
     private RemoteViews remoteViews;
+    private Bitmap bitmap;
+    public static final String KEY_VALUE = "value";
 
     private boolean isSimple;
 
@@ -25,7 +31,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        createNotification();
+        //createNotification();
+
+        FragmentMap fragmentMap = new FragmentMap();
+        getSupportFragmentManager().beginTransaction().add(R.id.container,fragmentMap,"Fragment").commit();
     }
 
     private void createNotification(){
@@ -73,18 +82,29 @@ public class MainActivity extends AppCompatActivity {
                 ";adsjfladjflk;dfjlkdjflakdfjdaffjdlfjdjjjadjflkjadlkfjad;lkfjad;sljf;ladkjajlkfjad;lksfjl;akdjf;lkdsajf;";
 
 
+        remoteViews.setImageViewBitmap(R.id.snapshot,this.bitmap);
         remoteViews.setTextViewText(R.id.big_txt,msg);
         remoteViews.setOnClickPendingIntent(R.id.big_txt,intentAlert(1));
+        remoteViews.setOnClickPendingIntent(R.id.snapshot,intentAlert(2));
     }
 
     private PendingIntent intentAlert(int vaalue) {
         Intent intent = new Intent(MainActivity.this, NotificationTest.class);
         switch (vaalue) {
             case 1 :
-                intent.putExtra("alert",vaalue);
+                intent.putExtra(KEY_VALUE,vaalue);
+                break;
+            case 2 :
+                intent.putExtra(KEY_VALUE,vaalue);
                 break;
         }
         PendingIntent pIntent = PendingIntent.getActivity(MainActivity.this, (int)System.currentTimeMillis(),intent,0);
         return pIntent;
+    }
+
+    @Override
+    public void senSnapshot(Bitmap bitmap) {
+        this.bitmap = bitmap;
+        createNotification();
     }
 }
