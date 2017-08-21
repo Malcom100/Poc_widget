@@ -33,6 +33,10 @@ public class MainActivity extends AppCompatActivity implements ISnapHotGoogleMap
     private final int NOTIFICATION_ID = 0;
     private final int ZOOM_MAP = 12;
     private final String TYPE_MAP = "roadmap";
+    private double latA = 50.8894283;
+    private double lngA = 4.3243892;
+    private double latB = 50.8277026;
+    private double lngB = 4.353329;
 
     private boolean isSimple;
 
@@ -87,7 +91,8 @@ public class MainActivity extends AppCompatActivity implements ISnapHotGoogleMap
         notification.defaults |= Notification.DEFAULT_VIBRATE;
         notificationManager.notify(NOTIFICATION_ID, notification);
 
-        getMapUrl(lat,lng,400,400);
+        //getMapUrl(lat,lng,400,400);
+        getMapUrlWithTrace(600,600);
     }
 
     private void createViewNotif(){
@@ -127,6 +132,22 @@ public class MainActivity extends AppCompatActivity implements ISnapHotGoogleMap
                 + "&center=" + coordPair
                 + "&markers=color:black|" + coordPair;
 
+        Picasso.with(MainActivity.this).load(Uri.parse(urlMap)).into(remoteViews,R.id.snapshot,NOTIFICATION_ID,notification);
+    }
+
+    private void getMapUrlWithTrace(int width, int height) {
+        final String coordPair = lat + "," + lng;
+        final String coordPairA = latA + "," + lngA;
+        final String coordPairB = latB + "," + lngB;
+        String urlMap =  "http://maps.googleapis.com/maps/api/staticmap?"
+                + "&zoom="+ZOOM_MAP
+                + "&size=" + width + "x" + height
+                + "&maptype="+TYPE_MAP+"&sensor=true"
+                + "&center=" + coordPair
+                + "&markers=color:black|" + coordPair
+                + "&markers=color:blue|label:A|" + coordPairA
+                + "&markers=color:green|label:B|"+coordPairB
+                + "&path=color:0x0000ff|weight:5|"+coordPairA+"|"+coordPairB;
         Picasso.with(MainActivity.this).load(Uri.parse(urlMap)).into(remoteViews,R.id.snapshot,NOTIFICATION_ID,notification);
     }
 
