@@ -34,6 +34,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
+import adneom.poc_widget.MainActivity;
 import adneom.poc_widget.R;
 import adneom.poc_widget.interfaces.ISnapHotGoogleMap;
 
@@ -113,7 +114,7 @@ public class FragmentMap extends Fragment implements GoogleApiClient.ConnectionC
             myGoogleMap.getUiSettings().setMyLocationButtonEnabled(false);
 
             // For dropping a marker at a point on the Map
-            LatLng sydney = new LatLng(50.8537638, 4.3147165);
+            LatLng sydney = new LatLng(MainActivity.lat, MainActivity.lng);
             myGoogleMap.addMarker(new MarkerOptions().position(sydney).title("Brussels").snippet("Brussels ma belle :-) "));
 
 
