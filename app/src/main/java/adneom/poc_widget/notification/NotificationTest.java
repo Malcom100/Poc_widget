@@ -28,7 +28,12 @@ public class NotificationTest extends AppCompatActivity {
                         break;
                     case 2:
                         Intent intentSnapshot = new Intent(NotificationTest.this,MainActivity.class);
+                        intentSnapshot.putExtra(MainActivity.KEY_CAN_SHOW,true);
                         startActivity(intentSnapshot);
+                        break;
+                    case 3 :
+                        /*Intent intentClose = new Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS);
+                        sendBroadcast(intentClose);*/
                         break;
                     case -1:
                         break;
