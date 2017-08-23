@@ -52,7 +52,6 @@ public class RequestDirection extends AsyncTask<String, Void, String> {
             URL myURL = new URL(params[0]);
             httpsURLConnection = (HttpsURLConnection) myURL.openConnection();
             httpsURLConnection.setRequestMethod("GET");
-            Log.i("Test","code is "+httpsURLConnection.getResponseCode());
             if(httpsURLConnection.getResponseCode() == HttpURLConnection.HTTP_OK){
                 bufferedReader = new BufferedReader(new InputStreamReader(httpsURLConnection.getInputStream()));
                 str = new StringBuilder();
@@ -86,7 +85,12 @@ public class RequestDirection extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
         if(s != null && !s.isEmpty()){
-            try {
+            this.inter.notif(MyUtil.thePointsFromOverviewPolylineV2(s));
+            //MyUtil.thePointsFromOverviewPolyline(s);
+            //MyUtil.thePointsFromSteps(s);
+            //Log.i("Test",MyUtil.thePointsFromOverviewPolyline(s));
+            //Log.i("Test",MyUtil.thePointsFromSteps(s));
+            /*try {
                 JSONObject mainObject = new JSONObject(s);
                 if(mainObject.has(MyUtil.KEY_ROUTES)){
                     JSONArray routes = mainObject.getJSONArray(MyUtil.KEY_ROUTES);
@@ -98,12 +102,13 @@ public class RequestDirection extends AsyncTask<String, Void, String> {
                         for(LatLng p : pr){
                             Log.i("Test",p.toString());
                         }
+                        Log.i("Test",MyUtil.thePoints(s));
                     }
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
                 Log.e("E","error json object "+e.getMessage());
-            }
+            }*/
         }
     }
 }
