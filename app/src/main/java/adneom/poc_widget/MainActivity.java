@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements ISnapHotGoogleMap
     private double lngB = 4.353329;
     private final String TAG_FRG = "TAG_FRAGMENT";
     private boolean canShow = false;
-    private ArrayList<LatLng> routes;
+    private String routes;
 
     private boolean isSimple;
 
@@ -60,7 +60,8 @@ public class MainActivity extends AppCompatActivity implements ISnapHotGoogleMap
 
         testFragment(getIntent());
         RequestDirection requestDirection = new RequestDirection(MainActivity.this,MainActivity.this);
-        requestDirection.execute(MyUtil.addParameters(latA,lngA,latB,lngB));
+        String url = MyUtil.addParameters(latA,lngA,latB,lngB)+"&key="+MyUtil.KEY_GOOGLE;
+        requestDirection.execute(url);
     }
 
     private void testFragment(Intent intent){
@@ -210,6 +211,15 @@ public class MainActivity extends AppCompatActivity implements ISnapHotGoogleMap
         final String coordPair = lat + "," + lng;
         final String coordPairA = latA + "," + lngA;
         final String coordPairB = latB + "," + lngB;
+        /*String urlMap =  "http://maps.googleapis.com/maps/api/staticmap?"
+                + "&zoom="+ZOOM_MAP
+                + "&size=" + width + "x" + height
+                + "&maptype="+TYPE_MAP+"&sensor=true"
+                + "&center=" + coordPair
+                + "&markers=color:black|" + coordPair
+                + "&markers=color:blue|label:A|" + coordPairA
+                + "&markers=color:green|label:B|"+coordPairB
+                + "&path=color:0x0000ff|weight:5|"+coordPairA+"|"+coordPairB;*/
         String urlMap =  "http://maps.googleapis.com/maps/api/staticmap?"
                 + "&zoom="+ZOOM_MAP
                 + "&size=" + width + "x" + height
@@ -218,7 +228,7 @@ public class MainActivity extends AppCompatActivity implements ISnapHotGoogleMap
                 + "&markers=color:black|" + coordPair
                 + "&markers=color:blue|label:A|" + coordPairA
                 + "&markers=color:green|label:B|"+coordPairB
-                + "&path=color:0x0000ff|weight:5|"+coordPairA+"|"+coordPairB;
+                + "&path="+routes;
         Picasso.with(MainActivity.this).load(Uri.parse(urlMap)).into(remoteViews,R.id.snapshot,NOTIFICATION_ID,notification);
     }
 
@@ -229,7 +239,7 @@ public class MainActivity extends AppCompatActivity implements ISnapHotGoogleMap
     }
 
     @Override
-    public void notif(ArrayList<LatLng>points) {
+    public void notif(String points) {
         this.routes = points;
         createNotification();
     }
