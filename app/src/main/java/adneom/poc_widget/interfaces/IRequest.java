@@ -7,5 +7,5 @@ import java.util.ArrayList;
 
 public interface IRequest {
 
-    public void notif(ArrayList<LatLng> points);
+    public void notif(String points);
 }
